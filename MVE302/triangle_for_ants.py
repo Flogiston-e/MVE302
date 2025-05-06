@@ -47,7 +47,7 @@ def addLilyPadToPond(side_length, groups, side, height):
     if len(new_lilypad_groups) > 0:
         new_lilypad_groups.sort()
         groups[new_lilypad_groups[0]][0].append(new_lilypad)
-        for id in new_lilypad_groups[-1:1:-1]:
+        for id in new_lilypad_groups[-1:0:-1]:
             merge_group = groups.pop(id)
             groups[new_lilypad_groups[0]][0].extend(merge_group[0])
             groups[new_lilypad_groups[0]][1] = [groups[new_lilypad_groups[0]][1][0] | merge_group[1][0], groups[new_lilypad_groups[0]][1][1] | merge_group[1][1]]

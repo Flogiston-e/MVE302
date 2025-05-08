@@ -36,12 +36,15 @@ def addLilyPadToPond(side_length, groups, side, height):
         for lilypad in group[0]:
             if (lilypad[0][0]-new_lilypad[0][0])**2 + (lilypad[0][1]-new_lilypad[0][1])**2 <= side**2:
                 intersects = False
-                for p in new_lilypad:
-                    if pointintriangle(lilypad, p):
-                        intersects = True
+                for t1,t2 in [(new_lilypad, lilypad), (lilypad, new_lilypad)]:
+                    for p in t1:
+                        if pointintriangle(t2, p):
+                            intersects = True
+                            break
+                    if intersects:
+                        new_lilypad_groups.append(id)
                         break
                 if intersects:
-                    new_lilypad_groups.append(id)
                     break
 
     if len(new_lilypad_groups) > 0:
